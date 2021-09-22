@@ -1,0 +1,4 @@
+﻿trials.thisRepN,trials.thisTrialN,trials.thisN,trials.thisIndex,text.started,text.stopped,Trial No.,Level List,Puase Time,Staircase,Scene No,causal?,A.started,A.stopped,B.started,B.stopped,resp.keys,resp.rt,resp.started,resp.stopped,ISI.started,ISI.stopped,participant,session,date,expName,psychopyVersion,frameRate,
+0,0,0,0,6.6830769998487085,None,1,0.4,0.4,0,1,no,7.3239118999335915,None,7.3239118999335915,None,n,1.5584623999893665,7.3239118999335915,None,None,None,,001,2021_Sep_23_0019,Causality,2020.2.10,59.97594961467987,
+1,0,1,0,,,2,0.325,0.325,0,1,no,8.906124899862334,None,8.906124899862334,None,n,0.989805799908936,8.906124899862334,None,None,None,,001,2021_Sep_23_0019,Causality,2020.2.10,59.97594961467987,
+2,0,2,0,,,1,0,0,1,1,yes,9.921818600036204,None,9.921818600036204,None,y,0.834303799783811,9.921818600036204,None,None,None,,001,2021_Sep_23_0019,Causality,2020.2.10,59.97594961467987,

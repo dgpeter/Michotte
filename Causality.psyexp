@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" ?>
+<PsychoPy2experiment encoding="utf-8" version="2020.2.10">
+  <Settings>
+    <Param name="Audio latency priority" updates="None" val="use prefs" valType="str"/>
+    <Param name="Audio lib" updates="None" val="use prefs" valType="str"/>
+    <Param name="Completed URL" updates="None" val="" valType="str"/>
+    <Param name="Data file delimiter" updates="None" val="auto" valType="str"/>
+    <Param name="Data filename" updates="None" val="u'data/%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'])" valType="code"/>
+    <Param name="Enable Escape" updates="None" val="True" valType="bool"/>
+    <Param name="Experiment info" updates="None" val="{'participant': '', 'session': '001'}" valType="code"/>
+    <Param name="Force stereo" updates="None" val="True" valType="bool"/>
+    <Param name="Full-screen window" updates="None" val="True" valType="bool"/>
+    <Param name="HTML path" updates="None" val="" valType="str"/>
+    <Param name="Incomplete URL" updates="None" val="" valType="str"/>
+    <Param name="Monitor" updates="None" val="testMonitor" valType="str"/>
+    <Param name="Resources" updates="None" val="[]" valType="fileList"/>
+    <Param name="Save csv file" updates="None" val="False" valType="bool"/>
+    <Param name="Save excel file" updates="None" val="False" valType="bool"/>
+    <Param name="Save log file" updates="None" val="True" valType="bool"/>
+    <Param name="Save psydat file" updates="None" val="True" valType="bool"/>
+    <Param name="Save wide csv file" updates="None" val="True" valType="bool"/>
+    <Param name="Screen" updates="None" val="1" valType="num"/>
+    <Param name="Show info dlg" updates="None" val="True" valType="bool"/>
+    <Param name="Show mouse" updates="None" val="False" valType="bool"/>
+    <Param name="Units" updates="None" val="norm" valType="str"/>
+    <Param name="Use version" updates="None" val="" valType="str"/>
+    <Param name="Window size (pixels)" updates="None" val="[1536, 864]" valType="code"/>
+    <Param name="blendMode" updates="None" val="avg" valType="str"/>
+    <Param name="color" updates="None" val="$[0,0,0]" valType="str"/>
+    <Param name="colorSpace" updates="None" val="rgb" valType="str"/>
+    <Param name="expName" updates="None" val="Causality" valType="str"/>
+    <Param name="exportHTML" updates="None" val="on Sync" valType="str"/>
+    <Param name="logging level" updates="None" val="exp" valType="code"/>
+  </Settings>
+  <Routines>
+    <Routine name="trial">
+      <CodeComponent name="code">
+        <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="upperBound = 0.4&amp;#10;endTime = 0&amp;#10;pause = 0&amp;#10;endTimeSet = 0" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="x1 = -20&amp;#10;x2 = 0&amp;#10;pauseCalculated = 0 &amp;#10;endTimeSet = 0&amp;#10;endTime = 0&amp;#10;startPos = -20&amp;#10;rectangleSize = 1&amp;#10;speedCmS = 40&amp;#10;&amp;#10;currentScene = 1&amp;#10;staircase = round(random()) &amp;#10;&amp;#10;if staircase == 0 and staircaseTrialNo[staircase] &gt; globalTrialNo/2:&amp;#10;    staircase = 1&amp;#10;if staircase == 1 and staircaseTrialNo[staircase] &gt; globalTrialNo/2:&amp;#10;    staircase = 0&amp;#10;&amp;#10;if trialCounter &lt;= globalTrialNo:&amp;#10;    if staircase == 0:&amp;#10;            phi = 0.25&amp;#10;            initN = upperBound&amp;#10;            staircaseTrialNo[staircase] += 1&amp;#10;            if localTrialNo[staircase][currentScene] &gt; maxNoFlat:&amp;#10;                i = 1 &amp;#10;                while (i &lt;= noOfMiniScenes): &amp;#10;                    if localTrialNo[staircase][i] &lt;= maxNoFlat:&amp;#10;                        currentScene = i&amp;#10;                    i = i + 1&amp;#10;    else:&amp;#10;            phi = 0.75&amp;#10;            initN = 0&amp;#10;            staircaseTrialNo[staircase] += 1&amp;#10;            if localTrialNo[staircase][currentScene] &gt; maxNoFlat:&amp;#10;                i = 1 &amp;#10;                while (i &lt;= noOfMiniScenes):  &amp;#10;                    if localTrialNo[staircase][i] &lt;= maxNoFlat:              &amp;#10;                        currentScene = i&amp;#10;                    i = i + 1&amp;#10;&amp;#10;trial = localTrialNo[staircase][currentScene]&amp;#10;&amp;#10;if trial == 1:&amp;#10;   levList[staircase][currentScene][trial] = initN&amp;#10;elif trial == 2:&amp;#10;    levList[staircase][currentScene][trial] = initN-(initStep/2)*(kestList[staircase][currentScene][trial-1]-phi)&amp;#10;else:&amp;#10;    levList[staircase][currentScene][trial] = levList[staircase][currentScene][trial-1]-(initStep/(reversals+2))*(kestList[staircase][currentScene][trial-1]-phi)&amp;#10;&amp;#10;print(&quot;Before quality level is: &quot; + str(levList[staircase][currentScene][trial]))&amp;#10;# bound range&amp;#10;if staircase ==  0:&amp;#10;    if levList[staircase][currentScene][trial] &gt; initN:&amp;#10;        levList[staircase][currentScene][trial] = initN&amp;#10;    if levList[staircase][currentScene][trial] &lt; 0:&amp;#10;        levList[staircase][currentScene][trial] = 0&amp;#10;elif staircase == 1:&amp;#10;    if levList[staircase][currentScene][trial] &lt; initN:&amp;#10;        levList[staircase][currentScene][trial] = initN&amp;#10;    if levList[staircase][currentScene][trial] &lt; 0:&amp;#10;        levList[staircase][currentScene][trial] = 0&amp;#10;&amp;#10;pause = levList[staircase][currentScene][trial]&amp;#10;pauseCalculated = 1&amp;#10;print(&quot;Current pause level is: &quot; + str(pause))&amp;#10;&amp;#10;&amp;#10;&amp;#10;" valType="extendedCode"/>
+        <Param name="Code Type" updates="None" val="Py" valType="str"/>
+        <Param name="Each Frame" updates="constant" val="if pauseCalculated == 1:&amp;#10;    if(x1 &lt; -1):&amp;#10;        x1 = startPos + speedCmS*t&amp;#10;    elif endTimeSet == 0:&amp;#10;        print(&quot;Pause is: &quot; + str(pause))&amp;#10;        endTime = t + pause&amp;#10;        endTimeSet = 1&amp;#10;    if (endTime) &lt; t and endTimeSet == 1 and x2 &lt; (-1) * startPos:&amp;#10;        x2 = speedCmS * (t-(endTime))&amp;#10;    print(&quot;End time &quot; + str(endTime))&amp;#10;    print(&quot;Time &quot; + str(t))&amp;#10;    print(&quot;x2 &quot; + str(x2))&amp;#10;    #print(t)" valType="extendedCode"/>
+        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="# store level and response&amp;#10;#respList.append(response)&amp;#10;thisExp.addData('Trial No.', localTrialNo[staircase][currentScene])&amp;#10;#thisExp.addData('Comp Side', refSide * -1)&amp;#10;#thisExp.addData('Ref Num', nRefImage)&amp;#10;thisExp.addData('Level List', levList[staircase][currentScene][trial])&amp;#10;thisExp.addData('Puase Time', pause)&amp;#10;thisExp.addData('Staircase', staircase)&amp;#10;thisExp.addData('Scene No', currentScene)&amp;#10;&amp;#10;kestResp = 1&amp;#10;if resp.keys == 'y':&amp;#10;    kestResp = 0 # causal relation&amp;#10;&amp;#10;&amp;#10;&amp;#10;kestList[staircase][currentScene][trial] = kestResp&amp;#10;thisExp.addData('causal?', 'yes' if kestResp == 0 else 'no')&amp;#10;&amp;#10;# count reversals&amp;#10;if localTrialNo[staircase][currentScene] &gt; 1:&amp;#10;    if kestList[staircase][currentScene][trial] != kestList[staircase][currentScene][trial-1]:&amp;#10;        reversals += 1&amp;#10;        reverseList[staircase][currentScene][reversals] = levList[staircase][currentScene][trial-1]&amp;#10;&amp;#10;# increment trials&amp;#10;localTrialNo[staircase][currentScene] += 1&amp;#10;trialCounter = trialCounter + 1 &amp;#10;&amp;#10;" valType="extendedCode"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="code" valType="code"/>
+      </CodeComponent>
+      <PolygonComponent name="A">
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="fillColor" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="fillColorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="lineColor" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="lineColorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="lineWidth" updates="constant" val="1" valType="code"/>
+        <Param name="nVertices" updates="constant" val="4" valType="int"/>
+        <Param name="name" updates="None" val="A" valType="code"/>
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="pos" updates="set every frame" val="(x1, 0)" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="shape" updates="constant" val="rectangle" valType="str"/>
+        <Param name="size" updates="constant" val="(1, 1)" valType="code"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="2.0" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="units" updates="None" val="cm" valType="str"/>
+      </PolygonComponent>
+      <PolygonComponent name="B">
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="fillColor" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="fillColorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="lineColor" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="lineColorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="lineWidth" updates="constant" val="1" valType="code"/>
+        <Param name="nVertices" updates="constant" val="4" valType="int"/>
+        <Param name="name" updates="None" val="B" valType="code"/>
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="pos" updates="set every frame" val="(x2, 0)" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="shape" updates="constant" val="rectangle" valType="str"/>
+        <Param name="size" updates="constant" val="(1, 1)" valType="code"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="2.0" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="units" updates="None" val="cm" valType="str"/>
+      </PolygonComponent>
+      <KeyboardComponent name="resp">
+        <Param name="allowedKeys" updates="constant" val="'y','n'" valType="code"/>
+        <Param name="correctAns" updates="constant" val="" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="discard previous" updates="constant" val="True" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
+        <Param name="name" updates="None" val="resp" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="store" updates="constant" val="last key" valType="str"/>
+        <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
+        <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
+      </KeyboardComponent>
+      <StaticComponent name="ISI">
+        <Param name="code" updates="None" val="" valType="code"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="name" updates="None" val="ISI" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="2" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="0.3" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="False" valType="bool"/>
+      </StaticComponent>
+    </Routine>
+    <Routine name="intro">
+      <TextComponent name="text">
+        <Param name="color" updates="constant" val="white" valType="str"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="flip" updates="constant" val="" valType="str"/>
+        <Param name="font" updates="constant" val="Arial" valType="str"/>
+        <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
+        <Param name="letterHeight" updates="constant" val="0.1" valType="code"/>
+        <Param name="name" updates="None" val="text" valType="code"/>
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="text" updates="constant" val="Please evaluate the following sequences.&amp;#10;&amp;#10;If you consider there is a causal relationship between the objects in the scene (i.e. the first object is causing the stationary one to move) please press the &quot;Y&quot; key.&amp;#10;&amp;#10;If you consider the event does not have a causal nature press the &quot;N&quot;.&amp;#10;&amp;#10;Press any key to start." valType="extendedStr"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+        <Param name="wrapWidth" updates="constant" val="" valType="code"/>
+      </TextComponent>
+      <KeyboardComponent name="key_resp">
+        <Param name="allowedKeys" updates="constant" val="" valType="code"/>
+        <Param name="correctAns" updates="constant" val="" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="discard previous" updates="constant" val="True" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
+        <Param name="name" updates="None" val="key_resp" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="store" updates="constant" val="nothing" valType="str"/>
+        <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
+        <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
+      </KeyboardComponent>
+      <CodeComponent name="code_2">
+        <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="&amp;#10;&amp;#10;initStep = 0.2&amp;#10;upperBound = 400 &amp;#10;#noOfMiniScenes  = 3&amp;#10;noOfMiniScenes = 1&amp;#10;&amp;#10;reversals = 0&amp;#10;trialCounter = 1&amp;#10;&amp;#10;reversalsSharp = 0&amp;#10;reversalsFlat =  0&amp;#10;&amp;#10;&amp;#10;&amp;#10;levList = [0] * 2&amp;#10;respList = [0] * 2&amp;#10;kestList = [0] * 2&amp;#10;reverseList = [0] * 2&amp;#10;localTrialNo = [0] * 2&amp;#10;staircaseTrialNo = [1] * 2&amp;#10;&amp;#10;for i in range(2):&amp;#10;    levList[i] = [0] * (noOfMiniScenes + 2)&amp;#10;    respList[i] = [0] * (noOfMiniScenes + 2)&amp;#10;    kestList[i] = [0] * (noOfMiniScenes + 2)&amp;#10;    reverseList[i] = [0] * (noOfMiniScenes + 2)&amp;#10;    localTrialNo[i] = [0] * (noOfMiniScenes + 2)&amp;#10;    for j in range(noOfMiniScenes + 2):&amp;#10;        levList[i][j] = [0] * 100&amp;#10;        respList[i][j] = [0] * 100&amp;#10;        kestList[i][j] = [0] * 100&amp;#10;        reverseList[i][j] = [0] * 100&amp;#10;        localTrialNo[i][j] = 1&amp;#10;        &amp;#10;globalTrialNo = 60&amp;#10;maxNoFlat = globalTrialNo/(noOfMiniScenes * 2)&amp;#10;&amp;#10;" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Code Type" updates="None" val="Py" valType="str"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="code_2" valType="code"/>
+      </CodeComponent>
+    </Routine>
+  </Routines>
+  <Flow>
+    <Routine name="intro"/>
+    <LoopInitiator loopType="TrialHandler" name="trials">
+      <Param name="Selected rows" updates="None" val="" valType="str"/>
+      <Param name="conditions" updates="None" val="None" valType="str"/>
+      <Param name="conditionsFile" updates="None" val="" valType="str"/>
+      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
+      <Param name="isTrials" updates="None" val="True" valType="bool"/>
+      <Param name="loopType" updates="None" val="random" valType="str"/>
+      <Param name="nReps" updates="None" val="60" valType="code"/>
+      <Param name="name" updates="None" val="trials" valType="code"/>
+      <Param name="random seed" updates="None" val="" valType="code"/>
+    </LoopInitiator>
+    <Routine name="trial"/>
+    <LoopTerminator name="trials"/>
+  </Flow>
+</PsychoPy2experiment>
