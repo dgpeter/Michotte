@@ -1,0 +1,62 @@
+1.8167 	WARNING 	We strongly recommend you activate the PTB sound engine in PsychoPy prefs as the preferred audio engine. Its timing is vastly superior. Your prefs are currently set to use ['sounddevice', 'PTB', 'pyo', 'pygame'] (in that order).
+14.6160 	WARNING 	User requested fullscreen with size [1536  864], but screen is actually [1920, 1080]. Using actual size
+18.3919 	EXP 	Created window1 = Window(allowGUI=False, allowStencil=False, autoLog=True, backendConf=UNKNOWN, bitsMode=UNKNOWN, blendMode='avg', bpc=(8, 8, 8), color=array([0, 0, 0]), colorSpace='rgb', depthBits=8, fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x0000023B0F6FDA58>, gamma=None, gammaErrorPolicy='raise', lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x0000023B10B43F60>, multiSample=False, name='window1', numSamples=2, pos=[0.0, 0.0], screen=0, size=array([1920, 1080]), stencilBits=0, stereo=False, units='norm', useFBO=True, useRetina=False, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+18.3921 	EXP 	window1: mouseVisible = True
+18.3921 	EXP 	window1: recordFrameIntervals = False
+18.5586 	EXP 	window1: recordFrameIntervals = True
+18.7425 	EXP 	window1: recordFrameIntervals = False
+19.4859 	EXP 	Created text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='text', opacity=1, ori=0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='norm', win=Window(...), wrapWidth=1)
+19.4971 	EXP 	Created A = Rect(__class__=<class 'psychopy.visual.rect.Rect'>, autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace='rgb', contrast=None, depth=-1.0, fillColor=array([1, 1, 1]), fillColorSpace='rgb', fillRGB=array([1, 1, 1]), interpolate=True, lineColor=array([1., 1., 1.]), lineColorSpace='rgb', lineRGB=array([1, 1, 1]), lineWidth=1, name='A', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([1., 1.]), units='cm', vertices=ndarray(...), win=Window(...))
+19.4981 	EXP 	Created B = Rect(__class__=<class 'psychopy.visual.rect.Rect'>, autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace='rgb', contrast=None, depth=-2.0, fillColor=array([1, 1, 1]), fillColorSpace='rgb', fillRGB=array([1, 1, 1]), interpolate=True, lineColor=array([1., 1., 1.]), lineColorSpace='rgb', lineRGB=array([1, 1, 1]), lineWidth=1, name='B', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([1., 1.]), units='cm', vertices=ndarray(...), win=Window(...))
+19.5096 	EXP 	Created text_2 = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-5.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='text_2', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='Please record your answer ', units='norm', win=Window(...), wrapWidth=1)
+19.5410 	EXP 	text: autoDraw = True
+26.5259 	EXP 	Created sequence: random, trialTypes=1, nReps=60, seed=None
+26.5270 	EXP 	New trial (rep=0, index=0): None
+26.5327 	DATA 	Keypress: space
+26.5383 	EXP 	text: autoDraw = False
+26.5383 	EXP 	A: autoDraw = True
+26.5383 	EXP 	B: autoDraw = True
+28.5337 	EXP 	text_2: autoDraw = True
+28.5378 	EXP 	window1: recordFrameIntervals = False
+28.5500 	EXP 	A: autoDraw = False
+28.5500 	EXP 	B: autoDraw = False
+28.5522 	EXP 	window1: recordFrameIntervals = False
+30.6909 	DATA 	Keypress: y
+30.7139 	EXP 	New trial (rep=1, index=0): None
+30.7205 	EXP 	A: autoDraw = False
+30.7205 	EXP 	B: autoDraw = False
+30.7205 	EXP 	text_2: autoDraw = False
+30.7205 	EXP 	A: autoDraw = True
+30.7205 	EXP 	B: autoDraw = True
+32.7136 	EXP 	text_2: autoDraw = True
+32.7173 	EXP 	window1: recordFrameIntervals = False
+32.7301 	EXP 	A: autoDraw = False
+32.7301 	EXP 	B: autoDraw = False
+32.7326 	EXP 	window1: recordFrameIntervals = False
+33.1370 	EXP 	New trial (rep=2, index=0): None
+33.1401 	DATA 	Keypress: y
+33.1458 	EXP 	A: autoDraw = False
+33.1458 	EXP 	B: autoDraw = False
+33.1458 	EXP 	text_2: autoDraw = False
+33.1458 	EXP 	A: autoDraw = True
+33.1458 	EXP 	B: autoDraw = True
+34.3330 	DATA 	Keypress: n
+35.1279 	EXP 	text_2: autoDraw = True
+35.1320 	EXP 	window1: recordFrameIntervals = False
+35.1467 	EXP 	window1: recordFrameIntervals = False
+35.4209 	EXP 	A: autoDraw = False
+35.4209 	EXP 	B: autoDraw = False
+35.4651 	DATA 	Keypress: n
+35.4828 	EXP 	New trial (rep=3, index=0): None
+35.4943 	EXP 	A: autoDraw = False
+35.4943 	EXP 	B: autoDraw = False
+35.4943 	EXP 	text_2: autoDraw = False
+35.4943 	EXP 	A: autoDraw = True
+35.4943 	EXP 	B: autoDraw = True
+37.4764 	EXP 	text_2: autoDraw = True
+37.4806 	EXP 	window1: recordFrameIntervals = False
+37.4947 	EXP 	window1: recordFrameIntervals = False
+37.7704 	EXP 	A: autoDraw = False
+37.7704 	EXP 	B: autoDraw = False
+39.5493 	DATA 	Keypress: escape
+39.9272 	EXP 	window1: mouseVisible = True

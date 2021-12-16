@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" ?>
+<PsychoPy2experiment encoding="utf-8" version="2021.2.3">
+  <Settings>
+    <Param name="Audio latency priority" updates="None" val="use prefs" valType="str"/>
+    <Param name="Audio lib" updates="None" val="use prefs" valType="str"/>
+    <Param name="Completed URL" updates="None" val="" valType="str"/>
+    <Param name="Data file delimiter" updates="None" val="auto" valType="str"/>
+    <Param name="Data filename" updates="None" val="u'data/%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'])" valType="code"/>
+    <Param name="Enable Escape" updates="None" val="True" valType="bool"/>
+    <Param name="Experiment info" updates="None" val="{'participant': '', 'session': '001'}" valType="code"/>
+    <Param name="Force stereo" updates="None" val="True" valType="bool"/>
+    <Param name="Full-screen window" updates="None" val="True" valType="bool"/>
+    <Param name="HTML path" updates="None" val="" valType="str"/>
+    <Param name="Incomplete URL" updates="None" val="" valType="str"/>
+    <Param name="Monitor" updates="None" val="testMonitor" valType="str"/>
+    <Param name="Resources" updates="None" val="[]" valType="fileList"/>
+    <Param name="Save csv file" updates="None" val="False" valType="bool"/>
+    <Param name="Save excel file" updates="None" val="False" valType="bool"/>
+    <Param name="Save hdf5 file" updates="None" val="False" valType="bool"/>
+    <Param name="Save log file" updates="None" val="True" valType="bool"/>
+    <Param name="Save psydat file" updates="None" val="True" valType="bool"/>
+    <Param name="Save wide csv file" updates="None" val="True" valType="bool"/>
+    <Param name="Screen" updates="None" val="1" valType="num"/>
+    <Param name="Show info dlg" updates="None" val="True" valType="bool"/>
+    <Param name="Show mouse" updates="None" val="False" valType="bool"/>
+    <Param name="Units" updates="None" val="norm" valType="str"/>
+    <Param name="Use version" updates="None" val="" valType="str"/>
+    <Param name="Window size (pixels)" updates="None" val="[1536, 864]" valType="code"/>
+    <Param name="blendMode" updates="None" val="avg" valType="str"/>
+    <Param name="color" updates="None" val="black" valType="str"/>
+    <Param name="colorSpace" updates="None" val="rgb" valType="str"/>
+    <Param name="elAddress" updates="None" val="100.1.1.1" valType="str"/>
+    <Param name="elDataFiltering" updates="None" val="FILTER_LEVEL_2" valType="str"/>
+    <Param name="elLiveFiltering" updates="None" val="FILTER_LEVEL_OFF" valType="str"/>
+    <Param name="elModel" updates="None" val="EYELINK 1000 DESKTOP" valType="str"/>
+    <Param name="elPupilAlgorithm" updates="None" val="ELLIPSE_FIT" valType="str"/>
+    <Param name="elPupilMeasure" updates="None" val="PUPIL_AREA" valType="str"/>
+    <Param name="elSampleRate" updates="None" val="1000" valType="num"/>
+    <Param name="elSimMode" updates="None" val="False" valType="bool"/>
+    <Param name="elTrackEyes" updates="None" val="RIGHT_EYE" valType="str"/>
+    <Param name="elTrackingMode" updates="None" val="PUPIL_CR_TRACKING" valType="str"/>
+    <Param name="expName" updates="None" val="Causality" valType="str"/>
+    <Param name="exportHTML" updates="None" val="on Sync" valType="str"/>
+    <Param name="eyetracker" updates="None" val="None" valType="str"/>
+    <Param name="gpAddress" updates="None" val="127.0.0.1" valType="str"/>
+    <Param name="gpPort" updates="None" val="4242" valType="num"/>
+    <Param name="logging level" updates="None" val="exp" valType="code"/>
+    <Param name="mgBlink" updates="None" val="('MIDDLE_BUTTON',)" valType="list"/>
+    <Param name="mgMove" updates="None" val="CONTINUOUS" valType="str"/>
+    <Param name="mgSaccade" updates="None" val="0.5" valType="num"/>
+    <Param name="tbLicenseFile" updates="None" val="" valType="str"/>
+    <Param name="tbModel" updates="None" val="" valType="str"/>
+    <Param name="tbSampleRate" updates="None" val="60" valType="num"/>
+    <Param name="tbSerialNo" updates="None" val="" valType="str"/>
+  </Settings>
+  <Routines>
+    <Routine name="trial">
+      <CodeComponent name="code">
+        <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="import math&amp;#10;import numpy&amp;#10;import random&amp;#10;&amp;#10;def calculatePointTheta(initPoint, theta, direction):&amp;#10;    retX = initPoint.X + areaOfEffect * round(math.cos(theta),8) * direction&amp;#10;    retY = initPoint.Y + areaOfEffect * round(math.sin(theta),8) * direction&amp;#10;    return Point(retX, retY)&amp;#10;&amp;#10;def getDistance(x1,x2,y1,y2):&amp;#10;    deltaX = x2 - x1&amp;#10;    deltaY = y2 - y1&amp;#10;    return math.pow(deltaX,2) + math.pow(deltaY,2)&amp;#10;    &amp;#10;def normaliseAngle(angle):&amp;#10;    while angle &gt; 2 * math.pi:&amp;#10;        angle -= 2.0 * np.pi&amp;#10;&amp;#10;    while angle &lt; 0:&amp;#10;        angle += 2.0 * np.pi&amp;#10;    return angle &amp;#10;    &amp;#10;def calculateSectors(noOfCollisions):&amp;#10;    offsetSectors = 0&amp;#10;    sectorLimits = []&amp;#10;    for x in range(noOfCollisions):&amp;#10;        angle1 = math.radians(x * 360/noOfCollisions) + offsetSectors&amp;#10;        angle2 = math.radians((x+1) * 360/noOfCollisions) + offsetSectors&amp;#10;        angle1_normalised = normaliseAngle(angle1)&amp;#10;        angle2_normalised = normaliseAngle(angle2)&amp;#10;        if angle1_normalised &lt; angle2_normalised:&amp;#10;            sectorLimits.append((normaliseAngle(angle1),normaliseAngle(angle2)))&amp;#10;        else:&amp;#10;            sectorLimits.append((normaliseAngle(angle2),normaliseAngle(angle1)))&amp;#10;        print(&quot;Sector angles are &quot; + str(normaliseAngle(angle1)) + &quot; &quot; + str(normaliseAngle(angle2))) &amp;#10;    return sectorLimits &amp;#10;        &amp;#10;def isInSector(a,A,polarPoint, sector):&amp;#10;    flagRadius = a &lt; polarPoint[0] and polarPoint[0] &lt;= A&amp;#10;    flagTheta = sector[0] &lt;= polarPoint[1] and polarPoint[1] &lt;= sector[1]&amp;#10;    return (flagRadius and flagTheta)&amp;#10;&amp;#10;&amp;#10;def findNewPoints(sectorL1, sectorL2, radius):&amp;#10;    angle = random.uniform(sectorL1+0.25, sectorL2-0.25)&amp;#10;    r = round(random.uniform(2, radius), 2) &amp;#10;    xCoord = r * math.cos(angle)&amp;#10;    yCoord = r * math.sin(angle)&amp;#10;    theta = round(random.random()*math.radians(360),6)&amp;#10;    initPoint = calculatePointTheta(Point(xCoord,yCoord), theta, -1)&amp;#10;    midPoint = Point(xCoord,yCoord)&amp;#10;    endPoint = calculatePointTheta(Point(xCoord,yCoord), theta, 1)&amp;#10;    return [initPoint,midPoint, endPoint,theta] &amp;#10;    &amp;#10;def calculateCirclePoints(radius,noOfCollisions):&amp;#10;    samplePoints = []&amp;#10;    sectorLimits = calculateSectors(noOfCollisions)&amp;#10;    for sector in sectorLimits:&amp;#10;        newPoints = findNewPoints(sector[0],sector[1],radius)        &amp;#10;        initPoint = newPoints[0]&amp;#10;        endPoint = newPoints[2]&amp;#10;        #print(&quot;PointsX &quot; + str(xCoord) + &quot; &quot; + str(initPoint.X) + &quot; mid &quot; + str(endPoint.X))&amp;#10;        #print(&quot;PointsY &quot; + str(yCoord) + &quot; &quot; + str(initPoint.Y) + &quot; mid &quot; + str(endPoint.Y))&amp;#10;        #print(&quot;Caretsian Init &quot; + str(cartesianToPolar(initPoint)[1]) + &quot; &quot; + str(cartesianToPolar(endPoint)[1]))&amp;#10;        if isInSector(2,radius,cartesianToPolar(initPoint),sector) and isInSector(2,radius,cartesianToPolar(endPoint),sector):&amp;#10;            samplePoints.append((newPoints[1],newPoints[3]))&amp;#10;            print(&quot;append&quot;)&amp;#10;        else:&amp;#10;            while not (isInSector(2,radius,cartesianToPolar(initPoint),sector) and isInSector(2,radius,cartesianToPolar(endPoint),sector)):&amp;#10;                newPoints = findNewPoints(sector[0],sector[1],radius)        &amp;#10;                initPoint = newPoints[0]&amp;#10;                endPoint = newPoints[2]&amp;#10;            samplePoints.append((newPoints[1],newPoints[3]))&amp;#10;    return samplePoints&amp;#10;&amp;#10;def cartesianToPolar(point):&amp;#10;    r = math.sqrt(math.pow(point.X,2) + math.pow(point.Y,2))&amp;#10;    theta = normaliseAngle(math.atan2(point.Y,point.X))&amp;#10;    #print(&quot;Point theta is &quot; + str(theta))&amp;#10;    return (r,theta)&amp;#10;    &amp;#10;def createObject(pointCoord,colour):&amp;#10;  return visual.ShapeStim(&amp;#10;        win=win, name='A',units='cm', &amp;#10;        size=(0.5, 0.5), vertices='circle',&amp;#10;        ori=0, pos=[pointCoord.X,pointCoord.Y],&amp;#10;        lineWidth=1,     colorSpace='rgb',  lineColor=[1,1,1], fillColor=[1,1,colour],&amp;#10;        opacity=1, depth=-1.0, interpolate=True)&amp;#10;&amp;#10;def calculateDirection(theta):&amp;#10;    if theta &gt; math.radians(90) and theta &lt;= math.radians(270):&amp;#10;        xDirection = -1&amp;#10;    else:&amp;#10;        xDirection = 1&amp;#10;    if theta &gt; math.radians(180) and theta &lt; math.radians(360):&amp;#10;        yDirection = -1&amp;#10;    else:&amp;#10;        yDirection = 1  &amp;#10;    return (xDirection,yDirection) &amp;#10;    &amp;#10;class Point(object):&amp;#10; #Creates a point on a coordinate plane with values x and y.&amp;#10;    def __init__(self, x, y):&amp;#10;        self.X = x&amp;#10;        self.Y = y&amp;#10;&amp;#10;class Line():&amp;#10;    def __init__(self, objectA, objectB, theta):&amp;#10;        self.slope = 20&amp;#10;        self.pointA = Point(objectA.pos[0], objectA.pos[1])&amp;#10;        self.pointB = Point(objectB.pos[0], objectB.pos[1])&amp;#10;        deltaX = objectB.pos[0] - objectA.pos[0]&amp;#10;        deltaY = objectB.pos[1] - objectA.pos[1]&amp;#10;        direction = math.atan2(deltaY,deltaX)&amp;#10;        self.directionVector = direction&amp;#10;        self.b = self.pointB.Y - self.slope * self.pointB.X&amp;#10; &amp;#10;class Collision:&amp;#10;    def __init__(self, midPoint, speed, theta):&amp;#10;        self.theta = theta&amp;#10;        self.midPoint = midPoint&amp;#10;        self.objectB = createObject(midPoint,1)&amp;#10;        self.objectA = createObject(calculatePointTheta(self.midPoint,theta, -1),1) &amp;#10;        self.initPoint = Point(self.objectA.pos[0], self.objectA.pos[1])&amp;#10;        self.endPoint = calculatePointTheta(self.midPoint, theta,1)&amp;#10;        self.speed = speed&amp;#10;        self.lineEq = Line(self.objectA,self.objectB,self.theta)&amp;#10;        self.direction = calculateDirection(self.theta)&amp;#10;        self.reachTimer = 0&amp;#10;        self.movingA = 1&amp;#10;        self.wasPaused = 0&amp;#10;&amp;#10;        &amp;#10;      &amp;#10;       &amp;#10;&amp;#10;&amp;#10;&amp;#10;&amp;#10;areaOfEffect = 2      &amp;#10;upperBound = 0.4&amp;#10;endTime = 0&amp;#10;pause = 0&amp;#10;endTimeSet = 0&amp;#10;isCheckTrial = 0&amp;#10;&amp;#10;yA = -6&amp;#10;yB = -6&amp;#10;&amp;#10;" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="import math&amp;#10;import random&amp;#10;&amp;#10;theta = math.radians(200)&amp;#10;collisionSpeed = 0.02&amp;#10;&amp;#10;&amp;#10;&amp;#10;#noOfCollisions = 7&amp;#10;crossy.setPos((0,0))&amp;#10;radius = 7&amp;#10;&amp;#10;&amp;#10;############ Setting up scene ###############&amp;#10;&amp;#10;circlePoints = calculateCirclePoints(radius,noOfCollisions)&amp;#10;collisions = []&amp;#10;texttime = 7.2&amp;#10;currentScene = int(random.random() * noOfMiniScenes) + 1 &amp;#10;if currentScene == 1:&amp;#10;    #for area of effect = 2, aprox mean of 0.013 for 1 visangle or cm per sec&amp;#10;    speedInterval = (0.009,0.017)&amp;#10;    texttime = 7&amp;#10;elif currentScene == 2:&amp;#10;    #for area of effect = 2, aprox mean of 0.051 for 4 visangle or cm per sec&amp;#10;    speedInterval = (0.047,0.055)&amp;#10;    texttime = 4&amp;#10;&amp;#10;for point in circlePoints:&amp;#10;    collisionSpeed =  random.uniform(speedInterval[0],speedInterval[1])&amp;#10;    collisions.append(Collision(point[0], collisionSpeed, point[1]))&amp;#10;    &amp;#10;#collisions.append(c) &amp;#10;    &amp;#10;#print(str(c.speed) + &quot; &quot; + str(c.lineEq.slope) + &quot; &quot; + str(c.lineEq.b))&amp;#10;#for c in collisions:&amp;#10;#    print(&quot;PointsA &quot; + str(c.objectA.pos[0]) + &quot; &quot; + str(c.objectA.pos[1]) + &quot; mid &quot; + str(c.midPoint.X) + &quot; &quot; + str(c.midPoint.Y))&amp;#10;#    print(&quot;PointsB &quot; + str(c.objectB.pos[0]) + &quot; &quot; + str(c.objectB.pos[1]) + &quot; end &quot; + str(c.endPoint.X) + &quot; &quot; + str(c.endPoint.Y))&amp;#10;#    print(&quot;PointsYLineeq &quot; + str(c.lineEq.slope) + &quot; &quot; + str(c.lineEq.b))&amp;#10;#    print(&quot;Direction &quot; + str(c.direction))&amp;#10;#    print(&quot;&quot;)&amp;#10;&amp;#10;&amp;#10;&amp;#10;&amp;#10;&amp;#10;&amp;#10;&amp;#10;pauseCalculated = 0 &amp;#10;endTime = 0&amp;#10;movingA = 1&amp;#10;wasPaused = 0&amp;#10;startPos = -12&amp;#10;rectangleSize = 1&amp;#10;speedCmS = 40&amp;#10;&amp;#10;side = 1&amp;#10;if random.random() &lt; 0.5:&amp;#10;    side = -1&amp;#10;&amp;#10;&amp;#10;############ Kesten ###############&amp;#10;    &amp;#10;staircase = round(random.random()) &amp;#10;&amp;#10;if trialCounter in catchTrials and isCheckTrial == 0: &amp;#10;    isCheckTrial = 1&amp;#10;    #print('Chirp')&amp;#10;elif isCheckTrial == 1:&amp;#10;    isCheckTrial = 0&amp;#10;    trialCounter = trialCounter - 1 &amp;#10;    &amp;#10;if isCheckTrial == 0:&amp;#10;    print(&quot;what's up &quot; + str(trialCounter) + &quot; &quot; + str(isCheckTrial)) &amp;#10;    if staircase == 0 and staircaseTrialNo[staircase] &gt; globalTrialNo/2:&amp;#10;        staircase = 1&amp;#10;    if staircase == 1 and staircaseTrialNo[staircase] &gt; globalTrialNo/2:&amp;#10;        staircase = 0&amp;#10;&amp;#10;    if trialCounter &lt;= globalTrialNo:&amp;#10;        if staircase == 0:&amp;#10;                phi = 0.25&amp;#10;                initN = upperBound&amp;#10;                staircaseTrialNo[staircase] += 1&amp;#10;                if localTrialNo[staircase][currentScene] &gt; maxNoFlat:&amp;#10;                    i = 1 &amp;#10;                    while (i &lt;= noOfMiniScenes): &amp;#10;                        if localTrialNo[staircase][i] &lt;= maxNoFlat:&amp;#10;                            currentScene = i&amp;#10;                        i = i + 1&amp;#10;        else:&amp;#10;                phi = 0.75&amp;#10;                initN = 0&amp;#10;                staircaseTrialNo[staircase] += 1&amp;#10;                if localTrialNo[staircase][currentScene] &gt; maxNoFlat:&amp;#10;                    i = 1 &amp;#10;                    while (i &lt;= noOfMiniScenes):  &amp;#10;                        if localTrialNo[staircase][i] &lt;= maxNoFlat:              &amp;#10;                            currentScene = i&amp;#10;                        i = i + 1&amp;#10;&amp;#10;    trial = localTrialNo[staircase][currentScene]&amp;#10;&amp;#10;    if trial == 1:&amp;#10;       levList[staircase][currentScene][trial] = initN&amp;#10;    elif trial == 2:&amp;#10;        levList[staircase][currentScene][trial] = initN-(initStep/2)*(kestList[staircase][currentScene][trial-1]-phi)&amp;#10;    else:&amp;#10;        levList[staircase][currentScene][trial] = levList[staircase][currentScene][trial-1]-(initStep/(reversals+2))*(kestList[staircase][currentScene][trial-1]-phi)&amp;#10;&amp;#10;    #print(&quot;Before quality level is: &quot; + str(levList[staircase][currentScene][trial]))&amp;#10;    # bound range&amp;#10;    if staircase ==  0:&amp;#10;        if levList[staircase][currentScene][trial] &gt; initN:&amp;#10;            levList[staircase][currentScene][trial] = initN&amp;#10;        if levList[staircase][currentScene][trial] &lt; 0:&amp;#10;            levList[staircase][currentScene][trial] = 0&amp;#10;    elif staircase == 1:&amp;#10;        if levList[staircase][currentScene][trial] &lt; initN:&amp;#10;            levList[staircase][currentScene][trial] = initN&amp;#10;        if levList[staircase][currentScene][trial] &lt; 0:&amp;#10;            levList[staircase][currentScene][trial] = 0&amp;#10;&amp;#10;    pause = levList[staircase][currentScene][trial]&amp;#10;    pauseCalculated = 1&amp;#10;    #print(&quot;Current pause level is: &quot; + str(pause))&amp;#10;&amp;#10;else:&amp;#10;    pause = 1.0&amp;#10;    pauseCalculated = 1 &amp;#10;&amp;#10;counterI = 0 " valType="extendedCode"/>
+        <Param name="Code Type" updates="None" val="Py" valType="str"/>
+        <Param name="Each Frame" updates="constant" val="import math&amp;#10;import random&amp;#10;&amp;#10;for col in collisions:&amp;#10;    col.objectA.draw()&amp;#10;    col.objectB.draw()&amp;#10;    &amp;#10;#c.objectA.draw()&amp;#10;##c.objectB.draw()&amp;#10;&amp;#10;if pauseCalculated == 1 and t &gt; 1.0:&amp;#10;    #print(&quot;PointsA x:&quot; + str(c.objectA.pos[0]) + &quot; y: &quot; + str(c.objectA.pos[1]) + &quot; &quot; + str(c.midPoint.X)+ &quot; &quot; + str(c.midPoint.Y))&amp;#10;    #if abs(c.objectA.pos[0]) &lt; abs(c.midPoint.X - 0.5) and abs(c.objectA.pos[1]) &lt; abs(c.midPoint.Y - 0.5):&amp;#10;    for c in collisions:&amp;#10;        if getDistance(c.objectA.pos[0],c.objectB.pos[0],c.objectA.pos[1],c.objectB.pos[1]) &gt; c.objectA.size[0] / 2 and c.movingA == 1:&amp;#10;            #print(&quot;get distance &quot; + str(getDistance(c.objectA.pos[0],c.objectB.pos[0],c.objectA.pos[1],c.objectB.pos[1])) + &quot; size &quot; + str(c.objectA.size[0]))&amp;#10;        #if (abs(hypothenuse(c.objectB.pos[0],c.objectB.pos[1]) - hypothenuse(c.objectA.pos[0],c.objectA.pos[1])) &gt; c.objectA.size[0]) and movingA == 1:&amp;#10;            #print(&quot;Move A &quot; + str(c.objectA.pos[0]) + &quot; &quot; +  (c.objectA.pos[1]))&amp;#10;            x = c.objectA.pos[0] + (c.speed * math.cos(c.lineEq.directionVector))&amp;#10;            y = c.objectA.pos[1] + (c.speed * math.sin(c.lineEq.directionVector))&amp;#10;            c.objectA.setPos((x,y))&amp;#10;        else:&amp;#10;            #print(&quot;PointsA x:&quot; + str(c.objectA.pos[0]) + &quot; y: &quot; + str(c.objectA.pos[1]))&amp;#10;            c.movingA = 0&amp;#10;            if c.wasPaused == 0:&amp;#10;                c.reachTimer = t&amp;#10;                print(&quot;Timer is: &quot; + str(c.reachTimer) + &quot;speed was: &quot; + str(areaOfEffect/(c.reachTimer - 1.0)))&amp;#10;                c.wasPaused = 1&amp;#10;            else:&amp;#10;                &amp;#10;                if (t - c.reachTimer) &gt; pause and c.wasPaused == 1:&amp;#10;                    #print(&quot;PointsB &quot; + str(c.objectB.pos[0]) + &quot; &quot;  + str(c.objectB.pos[1])+ &quot; &quot;)&amp;#10;                    #if abs(c.objectB.pos[0]) &lt; abs(c.endPoint.X - 0.5) and abs(c.objectB.pos[1]) &lt; abs(c.endPoint.Y - 0.5):&amp;#10;                    if getDistance(c.objectB.pos[0],c.endPoint.X,c.objectB.pos[1],c.endPoint.Y) &gt; c.objectA.size[0] / 2 and c.movingA == 0:&amp;#10;                        #print(&quot;endPoint: &quot; + str(c.endPoint.X) + &quot; &quot; + str(c.endPoint.Y))&amp;#10;                       # print(str(getDistance(c.objectB.pos[0],c.endPoint.X,c.objectA.pos[1],c.endPoint.Y)))&amp;#10;                        x2 = c.objectB.pos[0] + (c.speed * math.cos(c.lineEq.directionVector))&amp;#10;                        y2 = c.objectB.pos[1] + (c.speed * math.sin(c.lineEq.directionVector))&amp;#10;                        c.objectB.setPos((x2,y2))&amp;#10;        &amp;#10;        if t &gt; texttime:&amp;#10;            for c in collisions:&amp;#10;                c.objectA.setPos((100,100))&amp;#10;                c.objectB.setPos((100,100))&amp;#10;                crossy.setPos((100,100))&amp;#10;                &amp;#10;        #print(&quot;End time &quot; + str(endTime))&amp;#10;        #print(&quot;Time &quot; + str(t))&amp;#10;        #print(&quot;x2 &quot; + str(x2))&amp;#10;        #print(t) " valType="extendedCode"/>
+        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="# store level and response&amp;#10;#respList.append(response)&amp;#10;thisExp.addData('Trial No.', localTrialNo[staircase][currentScene])&amp;#10;#thisExp.addData('Comp Side', refSide * -1)&amp;#10;#thisExp.addData('Ref Num', nRefImage)&amp;#10;thisExp.addData('Level List', levList[staircase][currentScene][trial])&amp;#10;thisExp.addData('Puase Time', pause)&amp;#10;thisExp.addData('Staircase', staircase)&amp;#10;thisExp.addData('Scene No', currentScene)&amp;#10;&amp;#10;kestResp = 1&amp;#10;if resp.keys == 'y':&amp;#10;    kestResp = 0 # causal relation&amp;#10;&amp;#10;&amp;#10;&amp;#10;&amp;#10;thisExp.addData('causal?', 'yes' if kestResp == 0 else 'no')&amp;#10;&amp;#10;if isCheckTrial == 0:&amp;#10;    kestList[staircase][currentScene][trial] = kestResp&amp;#10;    # count reversals&amp;#10;    if localTrialNo[staircase][currentScene] &gt; 1:&amp;#10;        if kestList[staircase][currentScene][trial] != kestList[staircase][currentScene][trial-1]:&amp;#10;            reversals += 1&amp;#10;            reverseList[staircase][currentScene][reversals] = levList[staircase][currentScene][trial-1]&amp;#10;&amp;#10;    # increment trials&amp;#10;    localTrialNo[staircase][currentScene] += 1&amp;#10;trialCounter = trialCounter + 1 &amp;#10;&amp;#10;" valType="extendedCode"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="code" valType="code"/>
+      </CodeComponent>
+      <KeyboardComponent name="resp">
+        <Param name="allowedKeys" updates="constant" val="'y','n'" valType="code"/>
+        <Param name="correctAns" updates="constant" val="" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="discard previous" updates="constant" val="True" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
+        <Param name="name" updates="None" val="resp" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="4" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="store" updates="constant" val="last key" valType="str"/>
+        <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
+        <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
+      </KeyboardComponent>
+      <TextComponent name="text_2">
+        <Param name="color" updates="constant" val="white" valType="color"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="contrast" updates="constant" val="1" valType="num"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="flip" updates="constant" val="None" valType="str"/>
+        <Param name="font" updates="constant" val="Open Sans" valType="str"/>
+        <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
+        <Param name="letterHeight" updates="constant" val="0.1" valType="num"/>
+        <Param name="name" updates="None" val="text_2" valType="code"/>
+        <Param name="opacity" updates="constant" val="" valType="num"/>
+        <Param name="ori" updates="constant" val="0" valType="num"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="$texttime" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="text" updates="constant" val="Please record your answer " valType="str"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+        <Param name="wrapWidth" updates="constant" val="" valType="num"/>
+      </TextComponent>
+      <PolygonComponent name="crossy">
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="contrast" updates="constant" val="1" valType="num"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="fillColor" updates="constant" val="red" valType="color"/>
+        <Param name="fillColorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="lineColor" updates="constant" val="red" valType="color"/>
+        <Param name="lineColorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="lineWidth" updates="constant" val="1" valType="num"/>
+        <Param name="nVertices" updates="constant" val="4" valType="int"/>
+        <Param name="name" updates="None" val="crossy" valType="code"/>
+        <Param name="opacity" updates="set every frame" val="1" valType="num"/>
+        <Param name="ori" updates="constant" val="0" valType="num"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="shape" updates="None" val="cross" valType="str"/>
+        <Param name="size" updates="constant" val="(0.2, 0.2)" valType="list"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="$texttime" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="units" updates="None" val="cm" valType="str"/>
+        <Param name="vertices" updates="constant" val="" valType="list"/>
+      </PolygonComponent>
+    </Routine>
+    <Routine name="intro">
+      <TextComponent name="text">
+        <Param name="color" updates="constant" val="white" valType="str"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="contrast" updates="constant" val="1" valType="num"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="flip" updates="constant" val="" valType="str"/>
+        <Param name="font" updates="constant" val="Arial" valType="str"/>
+        <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
+        <Param name="letterHeight" updates="constant" val="0.1" valType="code"/>
+        <Param name="name" updates="None" val="text" valType="code"/>
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="text" updates="constant" val="Please evaluate the following sequences.&amp;#10;&amp;#10;If you consider there is a causal relationship between the objects in the scene (i.e. the first object is causing the stationary one to move) please press the &quot;Y&quot; key.&amp;#10;&amp;#10;If you consider the event does not have a causal nature press the &quot;N&quot;.&amp;#10;&amp;#10;Please fixate your gaze on the RED CROSS when it appears on screen. &amp;#10;&amp;#10;Press any key to start." valType="extendedStr"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+        <Param name="wrapWidth" updates="constant" val="" valType="code"/>
+      </TextComponent>
+      <KeyboardComponent name="key_resp">
+        <Param name="allowedKeys" updates="constant" val="'space'" valType="code"/>
+        <Param name="correctAns" updates="constant" val="" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="discard previous" updates="constant" val="True" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
+        <Param name="name" updates="None" val="key_resp" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="store" updates="constant" val="nothing" valType="str"/>
+        <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
+        <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
+      </KeyboardComponent>
+      <CodeComponent name="code_2">
+        <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Code Type" updates="None" val="Py" valType="str"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="code_2" valType="code"/>
+      </CodeComponent>
+    </Routine>
+    <Routine name="conditions_">
+      <CodeComponent name="code_3">
+        <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="initStep = 0.2&amp;#10;upperBound = 400 &amp;#10;noOfMiniScenes  = 2&amp;#10;&amp;#10;reversals = 0&amp;#10;trialCounter = 1&amp;#10;&amp;#10;reversalsSharp = 0&amp;#10;reversalsFlat =  0&amp;#10;&amp;#10;&amp;#10;&amp;#10;levList = [0] * 2&amp;#10;respList = [0] * 2&amp;#10;kestList = [0] * 2&amp;#10;reverseList = [0] * 2&amp;#10;localTrialNo = [0] * 2&amp;#10;staircaseTrialNo = [1] * 2&amp;#10;&amp;#10;for i in range(2):&amp;#10;    levList[i] = [0] * (noOfMiniScenes + 2)&amp;#10;    respList[i] = [0] * (noOfMiniScenes + 2)&amp;#10;    kestList[i] = [0] * (noOfMiniScenes + 2)&amp;#10;    reverseList[i] = [0] * (noOfMiniScenes + 2)&amp;#10;    localTrialNo[i] = [0] * (noOfMiniScenes + 2)&amp;#10;    for j in range(noOfMiniScenes + 2):&amp;#10;        levList[i][j] = [0] * 100&amp;#10;        respList[i][j] = [0] * 100&amp;#10;        kestList[i][j] = [0] * 100&amp;#10;        reverseList[i][j] = [0] * 100&amp;#10;        localTrialNo[i][j] = 1&amp;#10;        &amp;#10;&amp;#10;&amp;#10;globalTrialNo = 126&amp;#10;maxNoFlat = globalTrialNo/(noOfMiniScenes * 2)&amp;#10;&amp;#10;catchTrials = []&amp;#10;i = 1&amp;#10;while i &lt; globalTrialNo:&amp;#10;    if i%20 == 0:&amp;#10;        catchTrials.append(round(random() * 10) + i) &amp;#10;    i = i + 1&amp;#10;        &amp;#10;print(catchTrials) " valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="shape = 'circle'&amp;#10;&amp;#10;&amp;#10;if trials_2.thisN == 0:&amp;#10;    noOfCollisions = 7&amp;#10;elif trials_2.thisN == 1:&amp;#10;    noOfCollisions = 1&amp;#10;&amp;#10;&amp;#10;&amp;#10;&amp;#10;" valType="extendedCode"/>
+        <Param name="Code Type" updates="None" val="Py" valType="str"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="code_3" valType="code"/>
+      </CodeComponent>
+    </Routine>
+  </Routines>
+  <Flow>
+    <Routine name="intro"/>
+    <LoopInitiator loopType="TrialHandler" name="trials_2">
+      <Param name="Selected rows" updates="None" val="" valType="str"/>
+      <Param name="conditions" updates="None" val="None" valType="str"/>
+      <Param name="conditionsFile" updates="None" val="" valType="file"/>
+      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
+      <Param name="isTrials" updates="None" val="True" valType="bool"/>
+      <Param name="loopType" updates="None" val="sequential" valType="str"/>
+      <Param name="nReps" updates="None" val="2" valType="num"/>
+      <Param name="name" updates="None" val="trials_2" valType="code"/>
+      <Param name="random seed" updates="None" val="" valType="code"/>
+    </LoopInitiator>
+    <Routine name="conditions_"/>
+    <LoopInitiator loopType="TrialHandler" name="trials">
+      <Param name="Selected rows" updates="None" val="" valType="str"/>
+      <Param name="conditions" updates="None" val="None" valType="str"/>
+      <Param name="conditionsFile" updates="None" val="" valType="str"/>
+      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
+      <Param name="isTrials" updates="None" val="True" valType="bool"/>
+      <Param name="loopType" updates="None" val="random" valType="str"/>
+      <Param name="nReps" updates="None" val="126" valType="code"/>
+      <Param name="name" updates="None" val="trials" valType="code"/>
+      <Param name="random seed" updates="None" val="" valType="code"/>
+    </LoopInitiator>
+    <Routine name="trial"/>
+    <LoopTerminator name="trials"/>
+    <LoopTerminator name="trials_2"/>
+  </Flow>
+</PsychoPy2experiment>

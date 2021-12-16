@@ -1,0 +1,98 @@
+1.8162 	WARNING 	We strongly recommend you activate the PTB sound engine in PsychoPy prefs as the preferred audio engine. Its timing is vastly superior. Your prefs are currently set to use ['sounddevice', 'PTB', 'pyo', 'pygame'] (in that order).
+22.2054 	EXP 	Created window1 = Window(allowGUI=True, allowStencil=False, autoLog=True, backendConf=UNKNOWN, bitsMode=UNKNOWN, blendMode='avg', bpc=(8, 8, 8), color=array([0, 0, 0]), colorSpace='rgb', depthBits=8, fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x0000010AD5552A58>, gamma=None, gammaErrorPolicy='raise', lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x0000010AD6964F28>, multiSample=False, name='window1', numSamples=2, pos=[192.0, 108.0], screen=0, size=array([1536,  864]), stencilBits=0, stereo=False, units='norm', useFBO=True, useRetina=False, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+22.2056 	EXP 	window1: mouseVisible = True
+22.2057 	EXP 	window1: recordFrameIntervals = False
+22.3701 	EXP 	window1: recordFrameIntervals = True
+22.5535 	EXP 	window1: recordFrameIntervals = False
+22.8804 	EXP 	Created text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='text', opacity=1, ori=0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='norm', win=Window(...), wrapWidth=1)
+22.8821 	EXP 	Created A = Rect(__class__=<class 'psychopy.visual.rect.Rect'>, autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace='rgb', contrast=None, depth=-1.0, fillColor=array([1, 1, 1]), fillColorSpace='rgb', fillRGB=array([1, 1, 1]), interpolate=True, lineColor=array([1., 1., 1.]), lineColorSpace='rgb', lineRGB=array([1, 1, 1]), lineWidth=1, name='A', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([1., 1.]), units='cm', vertices=ndarray(...), win=Window(...))
+22.8830 	EXP 	Created B = Rect(__class__=<class 'psychopy.visual.rect.Rect'>, autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace='rgb', contrast=None, depth=-2.0, fillColor=array([1, 1, 1]), fillColorSpace='rgb', fillRGB=array([1, 1, 1]), interpolate=True, lineColor=array([1., 1., 1.]), lineColorSpace='rgb', lineRGB=array([1, 1, 1]), lineWidth=1, name='B', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([1., 1.]), units='cm', vertices=ndarray(...), win=Window(...))
+22.8920 	EXP 	Created text_2 = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-5.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='text_2', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='Please record your answer ', units='norm', win=Window(...), wrapWidth=1)
+22.9374 	EXP 	text: autoDraw = True
+24.5591 	DATA 	Keypress: lwindows
+24.6434 	DATA 	Keypress: lshift
+24.8945 	DATA 	Keypress: s
+40.1942 	EXP 	Created sequence: random, trialTypes=1, nReps=60, seed=None
+40.1946 	EXP 	New trial (rep=0, index=0): None
+40.2061 	EXP 	text: autoDraw = False
+40.2890 	EXP 	A: autoDraw = True
+40.2890 	EXP 	B: autoDraw = True
+42.1883 	EXP 	window1: recordFrameIntervals = False
+42.2044 	EXP 	window1: recordFrameIntervals = False
+42.5039 	EXP 	A: autoDraw = False
+42.5039 	EXP 	B: autoDraw = False
+42.5039 	EXP 	text_2: autoDraw = True
+52.8367 	DATA 	Keypress: y
+52.8580 	EXP 	New trial (rep=1, index=0): None
+52.8776 	EXP 	A: autoDraw = False
+52.8776 	EXP 	B: autoDraw = False
+52.8776 	EXP 	text_2: autoDraw = False
+52.9624 	EXP 	A: autoDraw = True
+52.9624 	EXP 	B: autoDraw = True
+53.3143 	WARNING 	Got keycode {} but that code isn't yet known
+53.3144 	WARNING 	Keypress was given unknown key code (44)
+54.8601 	EXP 	window1: recordFrameIntervals = False
+54.8768 	EXP 	window1: recordFrameIntervals = False
+55.1762 	EXP 	A: autoDraw = False
+55.1762 	EXP 	B: autoDraw = False
+55.1762 	EXP 	text_2: autoDraw = True
+56.6661 	EXP 	New trial (rep=2, index=0): None
+56.6684 	DATA 	Keypress: y
+56.6748 	EXP 	A: autoDraw = False
+56.6748 	EXP 	B: autoDraw = False
+56.6748 	EXP 	text_2: autoDraw = False
+56.7582 	EXP 	A: autoDraw = True
+56.7582 	EXP 	B: autoDraw = True
+56.9602 	WARNING 	Got keycode {} but that code isn't yet known
+56.9603 	WARNING 	Keypress was given unknown key code (44)
+58.6569 	EXP 	window1: recordFrameIntervals = False
+58.6735 	EXP 	window1: recordFrameIntervals = False
+58.9745 	EXP 	A: autoDraw = False
+58.9745 	EXP 	B: autoDraw = False
+58.9745 	EXP 	text_2: autoDraw = True
+61.5682 	EXP 	New trial (rep=3, index=0): None
+61.5959 	EXP 	A: autoDraw = False
+61.5959 	EXP 	B: autoDraw = False
+61.5959 	EXP 	text_2: autoDraw = False
+61.6617 	EXP 	A: autoDraw = True
+61.6617 	EXP 	B: autoDraw = True
+63.5697 	EXP 	window1: recordFrameIntervals = False
+63.5863 	EXP 	window1: recordFrameIntervals = False
+63.8860 	EXP 	A: autoDraw = False
+63.8860 	EXP 	B: autoDraw = False
+63.8860 	EXP 	text_2: autoDraw = True
+111.9857 	EXP 	New trial (rep=4, index=0): None
+111.9955 	EXP 	A: autoDraw = False
+111.9955 	EXP 	B: autoDraw = False
+111.9955 	EXP 	text_2: autoDraw = False
+112.0789 	EXP 	A: autoDraw = True
+112.0789 	EXP 	B: autoDraw = True
+113.9776 	EXP 	window1: recordFrameIntervals = False
+113.9941 	EXP 	window1: recordFrameIntervals = False
+114.2940 	EXP 	A: autoDraw = False
+114.2940 	EXP 	B: autoDraw = False
+114.2940 	EXP 	text_2: autoDraw = True
+1090.5489 	EXP 	New trial (rep=5, index=0): None
+1090.5580 	EXP 	A: autoDraw = False
+1090.5580 	EXP 	B: autoDraw = False
+1090.5580 	EXP 	text_2: autoDraw = False
+1090.6408 	EXP 	A: autoDraw = True
+1090.6408 	EXP 	B: autoDraw = True
+1092.5562 	EXP 	window1: recordFrameIntervals = False
+1092.5733 	EXP 	window1: recordFrameIntervals = False
+1092.8722 	EXP 	A: autoDraw = False
+1092.8722 	EXP 	B: autoDraw = False
+1092.8722 	EXP 	text_2: autoDraw = True
+1098.9254 	EXP 	New trial (rep=6, index=0): None
+1098.9351 	EXP 	A: autoDraw = False
+1098.9351 	EXP 	B: autoDraw = False
+1098.9351 	EXP 	text_2: autoDraw = False
+1099.0174 	EXP 	A: autoDraw = True
+1099.0174 	EXP 	B: autoDraw = True
+1100.9328 	EXP 	window1: recordFrameIntervals = False
+1100.9496 	EXP 	window1: recordFrameIntervals = False
+1101.2487 	EXP 	A: autoDraw = False
+1101.2487 	EXP 	B: autoDraw = False
+1101.2487 	EXP 	text_2: autoDraw = True
+1142.3383 	DATA 	Keypress: escape
+1142.4754 	EXP 	window1: mouseVisible = True

@@ -1,8 +1,8 @@
 ﻿#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-This experiment was created using PsychoPy3 Experiment Builder (v2020.2.10),
-    on September 23, 2021, at 00:19
+This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
+    on October 26, 2021, at 13:07
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -15,14 +15,14 @@ from __future__ import absolute_import, division
 
 from psychopy import locale_setup
 from psychopy import prefs
-from psychopy import sound, gui, visual, core, data, event, logging, clock
+from psychopy import sound, gui, visual, core, data, event, logging, clock, colors
 from psychopy.constants import (NOT_STARTED, STARTED, PLAYING, PAUSED,
                                 STOPPED, FINISHED, PRESSED, RELEASED, FOREVER)
 
 import numpy as np  # whole numpy lib is available, prepend 'np.'
 from numpy import (sin, cos, tan, log, log10, pi, average,
                    sqrt, std, deg2rad, rad2deg, linspace, asarray)
-from numpy.random import random, randint, normal, shuffle
+from numpy.random import random, randint, normal, shuffle, choice as randchoice
 import os  # handy system and path functions
 import sys  # to get file system encoding
 
@@ -35,7 +35,7 @@ _thisDir = os.path.dirname(os.path.abspath(__file__))
 os.chdir(_thisDir)
 
 # Store info about the experiment session
-psychopyVersion = '2020.2.10'
+psychopyVersion = '2021.2.3'
 expName = 'Causality'  # from the Builder filename that created this script
 expInfo = {'participant': '', 'session': '001'}
 dlg = gui.DlgFromDict(dictionary=expInfo, sortKeys=False, title=expName)
@@ -51,7 +51,7 @@ filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expNa
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath='\\\\nask.man.ac.uk\\home$\\Desktop\\Causality\\Causality_lastrun.py',
+    originPath='C:\\Users\\m01578dp\\Michotte\\Causality_lastrun.py',
     savePickle=True, saveWideText=True,
     dataFileName=filename)
 # save a log file for detail verbose info
@@ -65,8 +65,8 @@ frameTolerance = 0.001  # how close to onset before 'same' frame
 
 # Setup the Window
 win = visual.Window(
-    size=[1536, 864], fullscr=True, screen=0, 
-    winType='pyglet', allowGUI=False, allowStencil=False,
+    size=[1536, 864], fullscr=False, screen=0, 
+    winType='pyglet', allowGUI=True, allowStencil=False,
     monitor='testMonitor', color=[0,0,0], colorSpace='rgb',
     blendMode='avg', useFBO=True, 
     units='norm')
@@ -76,6 +76,9 @@ if expInfo['frameRate'] != None:
     frameDur = 1.0 / round(expInfo['frameRate'])
 else:
     frameDur = 1.0 / 60.0  # could not measure, so guess
+
+# Setup eyetracking
+ioDevice = ioConfig = ioSession = ioServer = eyetracker = None
 
 # create a default keyboard (e.g. to check for escape)
 defaultKeyboard = keyboard.Keyboard()
@@ -140,18 +143,23 @@ A = visual.Rect(
     win=win, name='A',units='cm', 
     width=(1, 1)[0], height=(1, 1)[1],
     ori=0, pos=[0,0],
-    lineWidth=1, lineColor=[1,1,1], lineColorSpace='rgb',
-    fillColor=[1,1,1], fillColorSpace='rgb',
+    lineWidth=1,     colorSpace='rgb',  lineColor=[1,1,1], fillColor=[1,1,1],
     opacity=1, depth=-1.0, interpolate=True)
 B = visual.Rect(
     win=win, name='B',units='cm', 
     width=(1, 1)[0], height=(1, 1)[1],
     ori=0, pos=[0,0],
-    lineWidth=1, lineColor=[1,1,1], lineColorSpace='rgb',
-    fillColor=[1,1,1], fillColorSpace='rgb',
+    lineWidth=1,     colorSpace='rgb',  lineColor=[1,1,1], fillColor=[1,1,1],
     opacity=1, depth=-2.0, interpolate=True)
 resp = keyboard.Keyboard()
 ISI = clock.StaticPeriod(win=win, screenHz=expInfo['frameRate'], name='ISI')
+text_2 = visual.TextStim(win=win, name='text_2',
+    text='Please record your answer ',
+    font='Open Sans',
+    pos=(0, 0), height=0.1, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=-5.0);
 
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
@@ -210,7 +218,7 @@ while continueRoutine:
         win.callOnFlip(key_resp.clock.reset)  # t=0 on next screen flip
         win.callOnFlip(key_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
     if key_resp.status == STARTED and not waitOnFlip:
-        theseKeys = key_resp.getKeys(keyList=None, waitRelease=False)
+        theseKeys = key_resp.getKeys(keyList=['space'], waitRelease=False)
         _key_resp_allKeys.extend(theseKeys)
         if len(_key_resp_allKeys):
             key_resp.keys = _key_resp_allKeys[-1].name  # just the last key pressed
@@ -338,7 +346,7 @@ for thisTrial in trials:
     resp.rt = []
     _resp_allKeys = []
     # keep track of which components have finished
-    trialComponents = [A, B, resp, ISI]
+    trialComponents = [A, B, resp, ISI, text_2]
     for thisComponent in trialComponents:
         thisComponent.tStart = None
         thisComponent.tStop = None
@@ -375,7 +383,7 @@ for thisTrial in trials:
             #print(t)
         
         # *A* updates
-        if A.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        if A.status == NOT_STARTED and tThisFlip >= 0.1-frameTolerance:
             # keep track of start time/frame for later
             A.frameNStart = frameN  # exact frame index
             A.tStart = t  # local t and not account for scr refresh
@@ -391,10 +399,10 @@ for thisTrial in trials:
                 win.timeOnFlip(A, 'tStopRefresh')  # time at next scr refresh
                 A.setAutoDraw(False)
         if A.status == STARTED:  # only update if drawing
-            A.setPos((x1, 0))
+            A.setPos((x1, 0), log=False)
         
         # *B* updates
-        if B.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
+        if B.status == NOT_STARTED and tThisFlip >= 0.1-frameTolerance:
             # keep track of start time/frame for later
             B.frameNStart = frameN  # exact frame index
             B.tStart = t  # local t and not account for scr refresh
@@ -410,11 +418,11 @@ for thisTrial in trials:
                 win.timeOnFlip(B, 'tStopRefresh')  # time at next scr refresh
                 B.setAutoDraw(False)
         if B.status == STARTED:  # only update if drawing
-            B.setPos((x2, 0))
+            B.setPos((x2, 0), log=False)
         
         # *resp* updates
         waitOnFlip = False
-        if resp.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        if resp.status == NOT_STARTED and tThisFlip >= 2.3-frameTolerance:
             # keep track of start time/frame for later
             resp.frameNStart = frameN  # exact frame index
             resp.tStart = t  # local t and not account for scr refresh
@@ -433,6 +441,15 @@ for thisTrial in trials:
                 resp.rt = _resp_allKeys[-1].rt
                 # a response ends the routine
                 continueRoutine = False
+        
+        # *text_2* updates
+        if text_2.status == NOT_STARTED and tThisFlip >= 2.3-frameTolerance:
+            # keep track of start time/frame for later
+            text_2.frameNStart = frameN  # exact frame index
+            text_2.tStart = t  # local t and not account for scr refresh
+            text_2.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(text_2, 'tStartRefresh')  # time at next scr refresh
+            text_2.setAutoDraw(True)
         # *ISI* period
         if ISI.status == NOT_STARTED and t >= 2-frameTolerance:
             # keep track of start time/frame for later
@@ -510,6 +527,8 @@ for thisTrial in trials:
     trials.addData('resp.stopped', resp.tStopRefresh)
     trials.addData('ISI.started', ISI.tStart)
     trials.addData('ISI.stopped', ISI.tStop)
+    trials.addData('text_2.started', text_2.tStartRefresh)
+    trials.addData('text_2.stopped', text_2.tStopRefresh)
     # the Routine "trial" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
     thisExp.nextEntry()
